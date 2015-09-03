@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ubh-WM-Inp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,95 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GB1-FD-1Un" userLabel="ulButton">
+                                <rect key="frame" x="50" y="114" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6jh-2z-Qj5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu2-nh-xZP" userLabel="urButton">
+                                <rect key="frame" x="490" y="114" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AhP-ey-T1w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14j-wq-Rfb" userLabel="dlButton">
+                                <rect key="frame" x="50" y="520" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bS7-FC-sKc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0V-Bf-GiZ" userLabel="drButton">
+                                <rect key="frame" x="490" y="520" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XpG-ic-92l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-pT-G8Y" userLabel="centerButton">
+                                <rect key="frame" x="270" y="285" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y8h-r4-gdf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsN-1W-Hh3" userLabel="arrowButton">
+                                <rect key="frame" x="71" y="92" width="20" height="22"/>
+                                <state key="normal" image="arrow.png"/>
+                                <connections>
+                                    <action selector="onMovingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2xp-nC-c26"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QsN-1W-Hh3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="45V-1C-ufj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="G0V-Bf-GiZ" secondAttribute="bottom" constant="50" id="ACl-A8-yYw"/>
+                            <constraint firstItem="QsN-1W-Hh3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="71" id="D7H-I4-0gu"/>
+                            <constraint firstItem="GB1-FD-1Un" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="E6f-Oy-apH"/>
+                            <constraint firstAttribute="trailing" secondItem="G0V-Bf-GiZ" secondAttribute="trailing" constant="50" id="IqH-8O-D4h"/>
+                            <constraint firstItem="rTr-pT-G8Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MT4-yf-GMY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="14j-wq-Rfb" secondAttribute="bottom" constant="50" id="Nh5-Bi-kd9"/>
+                            <constraint firstItem="Vu2-nh-xZP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="PO4-G6-yV8"/>
+                            <constraint firstItem="rTr-pT-G8Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wc1-Pd-3d7"/>
+                            <constraint firstAttribute="trailing" secondItem="Vu2-nh-xZP" secondAttribute="trailing" constant="50" id="fWi-hI-z1W"/>
+                            <constraint firstItem="GB1-FD-1Un" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="weL-Ir-JPx"/>
+                            <constraint firstItem="14j-wq-Rfb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="ztP-nR-DbE"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="O9a-g5-6U3"/>
+                    <connections>
+                        <outlet property="movingButton" destination="QsN-1W-Hh3" id="z0h-Vk-PE7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1075" y="915"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GTK-R7-w0g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ubh-WM-Inp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CJO-CF-KLN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HYT-Rr-l7S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFD-2n-4Yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="382" y="915"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.png" width="20" height="14"/>
+    </resources>
 </document>
