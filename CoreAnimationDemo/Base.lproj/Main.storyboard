@@ -23,13 +23,6 @@
                                     <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6jh-2z-Qj5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu2-nh-xZP" userLabel="urButton">
-                                <rect key="frame" x="490" y="114" width="60" height="30"/>
-                                <state key="normal" title="I'm here!"/>
-                                <connections>
-                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AhP-ey-T1w"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14j-wq-Rfb" userLabel="dlButton">
                                 <rect key="frame" x="50" y="520" width="60" height="30"/>
                                 <state key="normal" title="I'm here!"/>
@@ -44,11 +37,11 @@
                                     <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XpG-ic-92l"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-pT-G8Y" userLabel="centerButton">
-                                <rect key="frame" x="270" y="285" width="60" height="30"/>
-                                <state key="normal" title="I'm here!"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-pT-G8Y" userLabel="curveButton">
+                                <rect key="frame" x="257" y="285" width="87" height="30"/>
+                                <state key="normal" title="Curve Picker"/>
                                 <connections>
-                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y8h-r4-gdf"/>
+                                    <action selector="onCurvePickerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZNa-SY-3KO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsN-1W-Hh3" userLabel="arrowButton">
@@ -56,6 +49,13 @@
                                 <state key="normal" image="arrow.png"/>
                                 <connections>
                                     <action selector="onMovingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2xp-nC-c26"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu2-nh-xZP" userLabel="urButton">
+                                <rect key="frame" x="490" y="114" width="60" height="30"/>
+                                <state key="normal" title="I'm here!"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nwa-HY-a0Y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="915"/>
+            <point key="canvasLocation" x="1103" y="754"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GTK-R7-w0g">
@@ -100,7 +100,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFD-2n-4Yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="915"/>
+            <point key="canvasLocation" x="418" y="754"/>
         </scene>
     </scenes>
     <resources>

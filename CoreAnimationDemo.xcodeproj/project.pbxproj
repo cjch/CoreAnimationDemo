@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5587DEA91B98910700B17053 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587DEA81B98910700B17053 /* arrow.png */; };
+		5587DEAF1B99342900B17053 /* UIView+CustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */; };
 		55C1EFBB1B92C75E003A454D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBA1B92C75E003A454D /* main.m */; };
 		55C1EFBE1B92C75E003A454D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBD1B92C75E003A454D /* AppDelegate.m */; };
 		55C1EFC11B92C75E003A454D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFC01B92C75E003A454D /* ViewController.m */; };
@@ -18,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		5587DEA81B98910700B17053 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		5587DEAD1B99342900B17053 /* UIView+CustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAnimation.h"; sourceTree = "<group>"; };
+		5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAnimation.m"; sourceTree = "<group>"; };
 		55C1EFB61B92C75E003A454D /* CoreAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C1EFBA1B92C75E003A454D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55C1EFBC1B92C75E003A454D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				55C1EFBC1B92C75E003A454D /* AppDelegate.h */,
+				5587DEAD1B99342900B17053 /* UIView+CustomAnimation.h */,
+				5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */,
 				55C1EFBD1B92C75E003A454D /* AppDelegate.m */,
 				55C1EFBF1B92C75E003A454D /* ViewController.h */,
 				55C1EFC01B92C75E003A454D /* ViewController.m */,
@@ -155,6 +160,7 @@
 			files = (
 				55C1EFC11B92C75E003A454D /* ViewController.m in Sources */,
 				55C1EFBE1B92C75E003A454D /* AppDelegate.m in Sources */,
+				5587DEAF1B99342900B17053 /* UIView+CustomAnimation.m in Sources */,
 				55C1EFBB1B92C75E003A454D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
