@@ -14,7 +14,9 @@
 {
     [UIView animateWithDuration:duration delay:0 options:options animations:^{
         self.frame = CGRectMake(point.x, point.y, self.frame.size.width, self.frame.size.height);
-    } completion:nil];
+    } completion:^(BOOL finished){
+        
+    }];
 }
 
 - (void)rotateCircleWithDuration:(double)duration options:(UIViewAnimationOptions)options

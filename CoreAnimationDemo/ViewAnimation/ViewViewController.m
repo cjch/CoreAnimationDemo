@@ -1,12 +1,13 @@
 //
-//  ViewController.m
+//  ViewViewController.m
 //  CoreAnimationDemo
 //
-//  Created by jiechen on 15/8/30.
+//  Created by jiechen on 15/9/5.
 //  Copyright © 2015年 jch. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ViewViewController.h"
+
 #import "UIView+CustomAnimation.h"
 
 static int CurveValues[] = {
@@ -18,7 +19,7 @@ static int CurveValues[] = {
 
 static NSString *const CellID = @"CellID";
 
-@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ViewViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *movingButton;
 
@@ -32,12 +33,12 @@ static NSString *const CellID = @"CellID";
 
 @end
 
-@implementation ViewController
+@implementation ViewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.title = @"CoreAnimationDemo";
+    self.title = @"View Animation";
     
     self.selectedCurveIndex = 0;
 }
@@ -99,7 +100,9 @@ static NSString *const CellID = @"CellID";
 
 - (IBAction)onMovingButtonPressed:(UIButton *)sender
 {
-    [self.movingButton rotateCircleWithDuration:1.0 options:CurveValues[self.selectedCurveIndex]];
+//    [self.movingButton rotateCircleWithDuration:1.0 options:CurveValues[self.selectedCurveIndex]];
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - setter and getter

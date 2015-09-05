@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		5587DEA91B98910700B17053 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587DEA81B98910700B17053 /* arrow.png */; };
-		5587DEAF1B99342900B17053 /* UIView+CustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */; };
 		55C1EFBB1B92C75E003A454D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBA1B92C75E003A454D /* main.m */; };
 		55C1EFBE1B92C75E003A454D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBD1B92C75E003A454D /* AppDelegate.m */; };
 		55C1EFC11B92C75E003A454D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFC01B92C75E003A454D /* ViewController.m */; };
 		55C1EFC41B92C75E003A454D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C1EFC21B92C75E003A454D /* Main.storyboard */; };
 		55C1EFC61B92C75E003A454D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C1EFC51B92C75E003A454D /* Assets.xcassets */; };
 		55C1EFC91B92C75E003A454D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C1EFC71B92C75E003A454D /* LaunchScreen.storyboard */; };
+		55D982AC1B9A8BD80027ED4D /* UIView+CustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D982AB1B9A8BD80027ED4D /* UIView+CustomAnimation.m */; };
+		55D982B01B9A8C010027ED4D /* LayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D982AF1B9A8C010027ED4D /* LayerViewController.m */; };
+		55D982B41B9A8C290027ED4D /* ViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D982B31B9A8C290027ED4D /* ViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5587DEA81B98910700B17053 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		5587DEAD1B99342900B17053 /* UIView+CustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAnimation.h"; sourceTree = "<group>"; };
-		5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAnimation.m"; sourceTree = "<group>"; };
 		55C1EFB61B92C75E003A454D /* CoreAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C1EFBA1B92C75E003A454D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55C1EFBC1B92C75E003A454D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,6 +31,12 @@
 		55C1EFC51B92C75E003A454D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55C1EFC81B92C75E003A454D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55C1EFCA1B92C75E003A454D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55D982AA1B9A8BD80027ED4D /* UIView+CustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CustomAnimation.h"; path = "ViewAnimation/UIView+CustomAnimation.h"; sourceTree = "<group>"; };
+		55D982AB1B9A8BD80027ED4D /* UIView+CustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CustomAnimation.m"; path = "ViewAnimation/UIView+CustomAnimation.m"; sourceTree = "<group>"; };
+		55D982AE1B9A8C010027ED4D /* LayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LayerViewController.h; path = LayerAnimation/LayerViewController.h; sourceTree = "<group>"; };
+		55D982AF1B9A8C010027ED4D /* LayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LayerViewController.m; path = LayerAnimation/LayerViewController.m; sourceTree = "<group>"; };
+		55D982B21B9A8C290027ED4D /* ViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewViewController.h; path = ViewAnimation/ViewViewController.h; sourceTree = "<group>"; };
+		55D982B31B9A8C290027ED4D /* ViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewViewController.m; path = ViewAnimation/ViewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +69,9 @@
 		55C1EFB81B92C75E003A454D /* CoreAnimationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				55D982B11B9A8C090027ED4D /* LayerAnimation */,
+				55D982AD1B9A8BDD0027ED4D /* ViewAnimation */,
 				55C1EFBC1B92C75E003A454D /* AppDelegate.h */,
-				5587DEAD1B99342900B17053 /* UIView+CustomAnimation.h */,
-				5587DEAE1B99342900B17053 /* UIView+CustomAnimation.m */,
 				55C1EFBD1B92C75E003A454D /* AppDelegate.m */,
 				55C1EFBF1B92C75E003A454D /* ViewController.h */,
 				55C1EFC01B92C75E003A454D /* ViewController.m */,
@@ -85,6 +91,26 @@
 				5587DEA81B98910700B17053 /* arrow.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55D982AD1B9A8BDD0027ED4D /* ViewAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				55D982AA1B9A8BD80027ED4D /* UIView+CustomAnimation.h */,
+				55D982AB1B9A8BD80027ED4D /* UIView+CustomAnimation.m */,
+				55D982B21B9A8C290027ED4D /* ViewViewController.h */,
+				55D982B31B9A8C290027ED4D /* ViewViewController.m */,
+			);
+			name = ViewAnimation;
+			sourceTree = "<group>";
+		};
+		55D982B11B9A8C090027ED4D /* LayerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				55D982AE1B9A8C010027ED4D /* LayerViewController.h */,
+				55D982AF1B9A8C010027ED4D /* LayerViewController.m */,
+			);
+			name = LayerAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +186,10 @@
 			files = (
 				55C1EFC11B92C75E003A454D /* ViewController.m in Sources */,
 				55C1EFBE1B92C75E003A454D /* AppDelegate.m in Sources */,
-				5587DEAF1B99342900B17053 /* UIView+CustomAnimation.m in Sources */,
+				55D982AC1B9A8BD80027ED4D /* UIView+CustomAnimation.m in Sources */,
+				55D982B41B9A8C290027ED4D /* ViewViewController.m in Sources */,
 				55C1EFBB1B92C75E003A454D /* main.m in Sources */,
+				55D982B01B9A8C010027ED4D /* LayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
