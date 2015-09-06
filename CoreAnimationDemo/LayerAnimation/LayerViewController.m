@@ -13,6 +13,13 @@
 @property (nonatomic, strong) CALayer *subLayer;
 @property (nonatomic, strong) CALayer *groupLayer;
 
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+// end-0, animating 1, pause 2
+@property (nonatomic, assign) int animationState;
+
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+
 @property (weak, nonatomic) IBOutlet UIButton *animateButton;
 - (IBAction)onbutton:(UIButton *)sender;
 
@@ -25,6 +32,8 @@
     // Do any additional setup after loading the view.
     self.title = @"Layer Animation";
     self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    [self.pauseButton addTarget:self action:@selector(onPauseButton) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -58,13 +67,36 @@
             [self groupAnimation];
             break;
         }
+        case 4:
+            [self transitionAnimation];
+            break;
         default:
             break;
     }
     
     sender.tag++;
-    if (sender.tag == 4) {
+    if (sender.tag == 5) {
         sender.tag = 0;
+    }
+}
+
+- (void)onPauseButton
+{
+    if (self.animationState == 1) {
+        self.animationState = 2;
+        CFTimeInterval pausedTime = [self.subLayer convertTime:CACurrentMediaTime() fromLayer:nil];
+        self.subLayer.speed = 0;
+        self.subLayer.timeOffset = pausedTime;
+    }
+    else if (self.animationState == 2){
+        self.animationState = 1;
+        CFTimeInterval pausedTime = [self.subLayer timeOffset];
+        self.subLayer.speed = 1;
+        self.subLayer.timeOffset = 0;
+        self.subLayer.beginTime = 0;
+        
+        CFTimeInterval timeSincePause = [self.subLayer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+        self.subLayer.beginTime = timeSincePause;
     }
 }
 
@@ -75,13 +107,14 @@
     CABasicAnimation *fadeA = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeA.fromValue = @(from);
     fadeA.toValue = @(to);
-    fadeA.duration = 5.0;
+    fadeA.duration = 2;
     [self.subLayer addAnimation:fadeA forKey:@"opacity"];
 
 }
 
 - (void)keyFrameAnimation
 {
+    self.animationState = 1;
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, 50, 300);
     CGPathAddCurveToPoint(path, NULL, 50, 100, 150, 100, 150, 300);
@@ -110,6 +143,22 @@
     [self.groupLayer addAnimation:group forKey:@"BorderChanges"];
 }
 
+- (void)transitionAnimation
+{
+    CATransition *transition = [CATransition animation];
+    transition.startProgress = 0;
+    transition.endProgress = 1;
+    transition.type = kCATransitionReveal;
+    transition.subtype = kCATransitionFromRight;
+    transition.duration = 2;
+    
+    [self.view1.layer addAnimation:transition forKey:@"transition"];
+    [self.view2.layer addAnimation:transition forKey:@"transition"];
+    
+    self.view1.hidden = YES;
+    self.view2.hidden = NO;
+}
+
 #pragma mark - setter and getter
 - (CALayer *)subLayer
 {
@@ -131,10 +180,27 @@
     if (!_groupLayer) {
         _groupLayer = [CALayer layer];
         _groupLayer.backgroundColor = [UIColor whiteColor].CGColor;
-        _groupLayer.frame = CGRectMake(50, 400, 200, 200);
+        _groupLayer.frame = CGRectMake(50, 350, 100, 100);
         _groupLayer.borderColor = [UIColor blackColor].CGColor;
         _groupLayer.borderWidth = 5;
         _groupLayer.cornerRadius = 5;
+        
+        /// perspective, set zPosition and parentLayer's sublayerTransform
+        //   |     subLayer.zPosition
+        //   |-----------|------------(eyePosition)
+        //   |
+        CGFloat zPosition = 40;
+        CGFloat eyePosition = 100;
+        CALayer *zLayer = [CALayer layer];
+        zLayer.backgroundColor = [UIColor blueColor].CGColor;
+        zLayer.frame = CGRectMake(0, 0, 25, 25);
+        zLayer.position = CGPointMake(50, 50);
+        zLayer.zPosition = zPosition;
+        [_groupLayer addSublayer:zLayer];
+        
+        CATransform3D pers = CATransform3DIdentity;
+        pers.m34 = -1.0 / eyePosition;
+        _groupLayer.sublayerTransform = pers;
     }
     return _groupLayer;
 }
