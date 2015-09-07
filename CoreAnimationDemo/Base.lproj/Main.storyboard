@@ -137,12 +137,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWP-UE-PCv" userLabel="animateButton">
-                                <rect key="frame" x="247" y="114" width="106" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWP-UE-PCv" userLabel="animateButton">
+                                <rect key="frame" x="63" y="123" width="106" height="30"/>
                                 <state key="normal" title="Animate Button"/>
-                                <connections>
-                                    <action selector="onbutton:" destination="U4p-64-xXA" eventType="touchUpInside" id="dAd-tW-6nQ"/>
-                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrY-Xk-k9C" userLabel="pauseButton">
+                                <rect key="frame" x="220" y="121" width="116" height="32"/>
+                                <state key="normal" title="Pause Animation"/>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uza-fm-WhO" userLabel="view2">
                                 <rect key="frame" x="69" y="459" width="114" height="103"/>
@@ -152,16 +153,8 @@
                                 <rect key="frame" x="69" y="459" width="114" height="103"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.0" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrY-Xk-k9C" userLabel="pauseButton">
-                                <rect key="frame" x="215" y="495" width="116" height="32"/>
-                                <state key="normal" title="Pause Animation"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gWP-UE-PCv" firstAttribute="top" secondItem="EjI-f0-UqX" secondAttribute="bottom" constant="50" id="2LU-Le-dq7"/>
-                            <constraint firstItem="gWP-UE-PCv" firstAttribute="centerX" secondItem="50N-DW-rDi" secondAttribute="centerX" id="CDG-Db-20o"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="animateButton" destination="gWP-UE-PCv" id="G7Y-xW-o3b"/>

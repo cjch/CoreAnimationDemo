@@ -7,21 +7,18 @@
 //
 
 #import "LayerViewController.h"
+#import "CALayer+CustomAnimation.h"
 
 @interface LayerViewController ()
 
 @property (nonatomic, strong) CALayer *subLayer;
 @property (nonatomic, strong) CALayer *groupLayer;
 
+@property (weak, nonatomic) IBOutlet UIButton *animateButton;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
-// end-0, animating 1, pause 2
-@property (nonatomic, assign) int animationState;
 
 @property (weak, nonatomic) IBOutlet UIView *view1;
 @property (weak, nonatomic) IBOutlet UIView *view2;
-
-@property (weak, nonatomic) IBOutlet UIButton *animateButton;
-- (IBAction)onbutton:(UIButton *)sender;
 
 @end
 
@@ -33,130 +30,65 @@
     self.title = @"Layer Animation";
     self.view.backgroundColor = [UIColor lightGrayColor];
     
-    [self.pauseButton addTarget:self action:@selector(onPauseButton) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     [self.view.layer addSublayer:self.subLayer];
     [self.view.layer addSublayer:self.groupLayer];
     //ordinaryly, layer.position == view.center
     NSLog(@"sublayer.position:%@", NSStringFromCGPoint(self.subLayer.position));
     self.subLayer.position = CGPointMake(50, 300);
+    
+    [self.animateButton addTarget:self action:@selector(onAnimateButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.pauseButton addTarget:self action:@selector(onPauseButton) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (IBAction)onbutton:(UIButton *)sender {
-    switch (sender.tag) {
+#pragma mark -
+- (IBAction)onAnimateButton
+{
+    switch (self.animateButton.tag) {
         case 0: // implicitly animation
-            self.subLayer.opacity = 0;
+            [self.subLayer implicitlyAnimateOpacity:0];
             break;
         case 1: //explicitly animation
-            [self AnimationOpacityFrom:0 to:1];
+            [self.subLayer explicitlyAnimateOpacity:1];
             break;
         case 2: // keyFrameAnimation
-            [self keyFrameAnimation];
+            [self.subLayer curveKeyFrameAnimation];
             break;
         case 3: // two animations together
         {
             //stop subLayer's animation
-            [self.subLayer removeAllAnimations];
-            CALayer *currentLayer = self.subLayer.presentationLayer;
-            self.subLayer.position = currentLayer.position;
+            [self.subLayer removeAnimationAndStay];
             
-            [self groupAnimation];
+            [self.groupLayer borderChangesGroupAnimation];
             break;
         }
-        case 4:
-            [self transitionAnimation];
+        case 4: // transaction
+        {
+            [self.view1.layer addTransitionAnimation];
+            [self.view2.layer addTransitionAnimation];
+            self.view1.hidden = YES;
+            self.view2.hidden = NO;
             break;
+        }
         default:
             break;
     }
     
-    sender.tag++;
-    if (sender.tag == 5) {
-        sender.tag = 0;
+    self.animateButton.tag++;
+    if (self.animateButton.tag == 5) {
+        self.animateButton.tag = 0;
     }
 }
 
 - (void)onPauseButton
 {
-    if (self.animationState == 1) {
-        self.animationState = 2;
-        CFTimeInterval pausedTime = [self.subLayer convertTime:CACurrentMediaTime() fromLayer:nil];
-        self.subLayer.speed = 0;
-        self.subLayer.timeOffset = pausedTime;
+    if (self.pauseButton.tag == 0) {
+        self.pauseButton.tag = 1;
+        [self.subLayer pauseAnimation];
     }
-    else if (self.animationState == 2){
-        self.animationState = 1;
-        CFTimeInterval pausedTime = [self.subLayer timeOffset];
-        self.subLayer.speed = 1;
-        self.subLayer.timeOffset = 0;
-        self.subLayer.beginTime = 0;
-        
-        CFTimeInterval timeSincePause = [self.subLayer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
-        self.subLayer.beginTime = timeSincePause;
+    else {
+        self.pauseButton.tag = 0;
+        [self.subLayer resumeAnimation];
     }
-}
-
-#pragma mark - layer animation
-- (void)AnimationOpacityFrom:(CGFloat)from to:(CGFloat)to
-{
-    self.subLayer.opacity = to;
-    CABasicAnimation *fadeA = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeA.fromValue = @(from);
-    fadeA.toValue = @(to);
-    fadeA.duration = 2;
-    [self.subLayer addAnimation:fadeA forKey:@"opacity"];
-
-}
-
-- (void)keyFrameAnimation
-{
-    self.animationState = 1;
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 50, 300);
-    CGPathAddCurveToPoint(path, NULL, 50, 100, 150, 100, 150, 300);
-    CGPathAddCurveToPoint(path, NULL, 150, 100, 300, 100, 300, 300);
-    
-    CAKeyframeAnimation *keyA = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    keyA.path = path;
-    keyA.duration = 5;
-    
-    [self.subLayer addAnimation:keyA forKey:@"position"];
-}
-
-- (void)groupAnimation
-{
-    CAKeyframeAnimation *keyAniation1 = [CAKeyframeAnimation animationWithKeyPath:@"borderWidth"];
-    keyAniation1.values = @[@1, @10, @5, @30, @0.5, @15, @2, @50, @0];
-    keyAniation1.calculationMode = kCAAnimationPaced;
-    
-    CAKeyframeAnimation *keyAniation2 = [CAKeyframeAnimation animationWithKeyPath:@"borderColor"];
-    keyAniation2.values = @[(id)[UIColor redColor].CGColor, (id)[UIColor greenColor].CGColor, (id)[UIColor blueColor].CGColor];
-    keyAniation2.calculationMode = kCAAnimationPaced;
-    
-    CAAnimationGroup *group = [CAAnimationGroup animation];
-    group.animations = @[keyAniation1, keyAniation2];
-    group.duration = 5;
-    [self.groupLayer addAnimation:group forKey:@"BorderChanges"];
-}
-
-- (void)transitionAnimation
-{
-    CATransition *transition = [CATransition animation];
-    transition.startProgress = 0;
-    transition.endProgress = 1;
-    transition.type = kCATransitionReveal;
-    transition.subtype = kCATransitionFromRight;
-    transition.duration = 2;
-    
-    [self.view1.layer addAnimation:transition forKey:@"transition"];
-    [self.view2.layer addAnimation:transition forKey:@"transition"];
-    
-    self.view1.hidden = YES;
-    self.view2.hidden = NO;
 }
 
 #pragma mark - setter and getter
