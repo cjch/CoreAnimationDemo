@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		55299CC11BA072C60051E939 /* GraphicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55299CC01BA072C60051E939 /* GraphicsViewController.m */; };
 		55299CCA1BA07C7D0051E939 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55299CC91BA07C7D0051E939 /* CustomView.m */; };
+		55299CCC1BA1C3300051E939 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55299CCB1BA1C3300051E939 /* QuartzCore.framework */; };
 		5587DEA91B98910700B17053 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587DEA81B98910700B17053 /* arrow.png */; };
 		55C1EFBB1B92C75E003A454D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBA1B92C75E003A454D /* main.m */; };
 		55C1EFBE1B92C75E003A454D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C1EFBD1B92C75E003A454D /* AppDelegate.m */; };
@@ -27,6 +28,7 @@
 		55299CC01BA072C60051E939 /* GraphicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicsViewController.m; sourceTree = "<group>"; };
 		55299CC81BA07C7D0051E939 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
 		55299CC91BA07C7D0051E939 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		55299CCB1BA1C3300051E939 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5587DEA81B98910700B17053 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		55C1EFB61B92C75E003A454D /* CoreAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C1EFBA1B92C75E003A454D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55299CCC1BA1C3300051E939 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		55C1EFAD1B92C75E003A454D = {
 			isa = PBXGroup;
 			children = (
+				55299CCB1BA1C3300051E939 /* QuartzCore.framework */,
 				55C1EFB81B92C75E003A454D /* CoreAnimationDemo */,
 				55C1EFB71B92C75E003A454D /* Products */,
 			);
