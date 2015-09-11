@@ -15,7 +15,7 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark -draw method
+#pragma mark - draw method
 - (void)drawCustomRect:(CGContextRef)context inRect:(CGRect)rect
 {
     CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
@@ -60,6 +60,35 @@
     CGContextStrokePath(context);
 }
 
+- (void)drawPattern:(CGContextRef)context
+{
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1].CGColor);
+    CGContextFillRect(context, self.bounds);
+    
+    CGContextSaveGState(context);
+    CGColorSpaceRef patternSpace = CGColorSpaceCreatePattern(NULL);
+    CGContextSetFillColorSpace(context, patternSpace);
+    CGPatternCallbacks callBacks = {0, &MyDrawPattern, NULL};
+    CGPatternRef pattern = CGPatternCreate(NULL, self.bounds, CGAffineTransformIdentity, 24, 24, kCGPatternTilingConstantSpacing, true, &callBacks);
+    CGFloat alpha = 1.0;
+    CGContextSetFillPattern(context, pattern, &alpha);
+    CGContextFillRect(context, self.bounds);
+    CGContextRestoreGState(context);
+}
+
+void MyDrawPattern(void *info, CGContextRef context)
+{
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1].CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 1), 1, [UIColor whiteColor].CGColor);
+    
+    CGContextAddArc(context, 3, 3, 4, 0, M_PI*2, 0);
+    CGContextFillPath(context);
+    
+    CGContextAddArc(context, 16, 16, 4, 0, M_PI*2, 0);
+    CGContextFillPath(context);
+}
+
+#pragma mark -
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -67,7 +96,7 @@
     switch (self.type) {
         case GraphicTypeRect:
             [self drawCustomRect:context inRect:cRect];
-            break;
+//            break;
         case GraphicTypeEllispe:
             [self drawCustomEllispe:context inRect:cRect];
             break;
@@ -79,6 +108,10 @@
             break;
         case GraphicTypeCurve:
             [self drawCurve:context];
+            break;
+        case GraphicTypePattern:
+            [self drawPattern:context];
+            break;
         default:
             break;
     }
