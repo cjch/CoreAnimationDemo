@@ -62,7 +62,7 @@ static NSString * const BasicCellIdentifier = @"BasicCell";
 - (NSArray *)graphicsArray
 {
     if (!_graphicsArray) {
-        _graphicsArray = @[@"Rect", @"Ellispe", @"Arc", @"Triangle", @"Curve", @"Pattern"];
+        _graphicsArray = @[@"Rect", @"Ellispe", @"Arc", @"Triangle", @"Curve", @"Pattern", @"Text"];
     }
     return _graphicsArray;
 }

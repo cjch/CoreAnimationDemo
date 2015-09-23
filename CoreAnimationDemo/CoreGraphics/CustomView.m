@@ -8,10 +8,39 @@
 
 #import "CustomView.h"
 
+@interface CustomView ()
+
+@property (nonatomic, assign) CGFloat rate;
+@property (nonatomic, strong) NSTimer *timer;
+
+@end
+
 @implementation CustomView
+
+- (void)setRate:(CGFloat)rate
+{
+    _rate = rate;
+    if (self.type == GraphicTypeText) {
+        [self setNeedsDisplay];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.rate >= 1) {
+                self.rate = 0;
+            }
+            else{
+                self.rate += 0.02;
+            }
+        });
+    }
+}
 
 - (void)setType:(GraphicType)type {
     _type = type;
+    
+    if (_type == GraphicTypeText) {
+        self.rate = 0;
+    }
+    
     [self setNeedsDisplay];
 }
 
@@ -88,6 +117,19 @@ void MyDrawPattern(void *info, CGContextRef context)
     CGContextFillPath(context);
 }
 
+- (void)drawCustomText:(CGContextRef)context
+{
+    static CGFloat Width = 200;
+    NSString *string = @"歌词效果，歌词效果";
+    NSDictionary *info1 = @{NSForegroundColorAttributeName : [UIColor redColor],
+                           NSFontAttributeName :[UIFont systemFontOfSize:20]};
+    NSDictionary *info2 = @{NSForegroundColorAttributeName : [UIColor blackColor],
+                            NSFontAttributeName :[UIFont systemFontOfSize:20]};
+    
+    [string drawInRect:CGRectMake(50, 50, Width, 30) withAttributes:info2];
+    [string drawInRect:CGRectMake(50, 50, self.rate * Width, 30) withAttributes:info1];
+}
+
 #pragma mark -
 - (void)drawRect:(CGRect)rect
 {
@@ -111,6 +153,9 @@ void MyDrawPattern(void *info, CGContextRef context)
             break;
         case GraphicTypePattern:
             [self drawPattern:context];
+            break;
+        case GraphicTypeText:
+            [self drawCustomText:context];
             break;
         default:
             break;

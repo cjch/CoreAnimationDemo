@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, GraphicType)
     GraphicTypeArc,
     GraphicTypeTriangle,
     GraphicTypeCurve,
-    GraphicTypePattern
+    GraphicTypePattern,
+    GraphicTypeText
 };
 @interface CustomView : UIView
 
